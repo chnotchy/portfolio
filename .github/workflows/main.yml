@@ -24,7 +24,7 @@ jobs:
       - name: build blog
         run: npm run build
       - name: export blog
-        run: npm run dev
+        run: npm run export
 
       - name: ssh key generate
         run: echo "$SSH_KEY" > key && chmod 600 key
