@@ -2,11 +2,8 @@ name: deploy to ConoHa WING
 
 on:
   push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
-
-  workflow_dispatch:
+    branches:
+      - master
 
 env:
   NODE_VERSION: '16'
