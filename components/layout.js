@@ -1,10 +1,8 @@
 import Head from 'next/head'
 import styles from './layout.module.css'
-import utilStyles from '../styles/utils.module.css'
 import Link from 'next/link'
 
-const name = 'Notchy'
-export const siteTitle = 'Notchy'
+const siteTitle = "Notchy"
 
 export default function Layout({ children, home }) {
   return (
@@ -26,6 +24,28 @@ export default function Layout({ children, home }) {
       </Head>
       <header className={styles.header}>
         {home ? (
+          <>
+            <h1 className=""></h1>
+          </>
+        ) : (
+          <>
+            <Link href="/">
+              <a>
+                <img
+                  src="/images/profile.jpg"
+                  className={styles.headerImage}
+                  alt=""
+                />
+              </a>
+            </Link>
+            <h2 className="">
+              <Link href="/">
+                <a className=""></a>
+              </Link>
+            </h2>
+          </>
+        )}
+        {/* {home ? (
           <>
             <img
               src="/images/profile.jpg"
@@ -51,16 +71,17 @@ export default function Layout({ children, home }) {
               </Link>
             </h2>
           </>
-        )}
+        )} */}
       </header>
       <main>{children}</main>
       {!home && (
         <div className={styles.backToHome}>
           <Link href="/">
-            <a>← Back to home</a>
+            <a>&larr;← Back to home</a>
           </Link>
         </div>
       )}
+      <footer></footer>
     </div>
   )
 }

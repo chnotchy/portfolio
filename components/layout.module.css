@@ -1,8 +1,8 @@
 .container {
-  max-width: 1200px;
+  min-height: 100vh;
   padding: 20px;
-  margin: 3rem auto;
-  background-color: #eee;
+  margin: auto;
+  background-color: #555;
 }
 
 .header {
