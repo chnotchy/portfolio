@@ -7,81 +7,75 @@ const siteTitle = "Notchy"
 export default function Layout({ children, home }) {
   return (
     <div className={styles.container}>
-      <Head>
-        <link rel="icon" href="/favicon.ico" />
-        <meta
-          name="description"
-          content="Learn how to build a personal website using Next.js"
-        />
-        <meta
-          property="og:image"
-          content={`https://og-image.now.sh/${encodeURI(
-            siteTitle
-          )}.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.zeit.co%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`}
-        />
-        <meta name="og:title" content={siteTitle} />
-        <meta name="twitter:card" content="summary_large_image" />
-      </Head>
-      <header className={styles.header}>
-        {home ? (
-          <>
-            <h1 className=""></h1>
-          </>
-        ) : (
-          <>
-            <Link href="/">
-              <a>
-                <img
-                  src="/images/profile.jpg"
-                  className={styles.headerImage}
-                  alt=""
-                />
-              </a>
-            </Link>
-            <h2 className="">
+      <div>
+        <Head>
+          <link rel="icon" href="/favicon.ico" />
+          <meta
+            name="description"
+            content="Learn how to build a personal website using Next.js"
+          />
+          <meta
+            property="og:image"
+            content={`https://og-image.now.sh/${encodeURI(
+              siteTitle
+            )}.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.zeit.co%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`}
+          />
+          <meta name="og:title" content={siteTitle} />
+          <meta name="twitter:card" content="summary_large_image" />
+        </Head>
+        <header className={styles.header}>
+          {home ? (
+            <div>
+              <h1 className={styles.headerTitle}>Portfolio</h1>
+            </div>
+          ) : (
+            <div>
               <Link href="/">
-                <a className=""></a>
+                <a className={styles.noDecoration}>
+                  <h1 className={styles.headerTitle}>Portfolio</h1>
+                </a>
               </Link>
-            </h2>
-          </>
-        )}
-        {/* {home ? (
-          <>
-            <img
-              src="/images/profile.jpg"
-              className={`${styles.headerHomeImage} ${utilStyles.borderCircle}`}
-              alt={name}
-            />
-            <h1 className={utilStyles.heading2Xl}>{name}</h1>
-          </>
-        ) : (
-          <>
-            <Link href="/">
-              <a>
-                <img
-                  src="/images/profile.jpg"
-                  className={`${styles.headerImage} ${utilStyles.borderCircle}`}
-                  alt={name}
-                />
-              </a>
-            </Link>
-            <h2 className={utilStyles.headingLg}>
+            </div>
+          )}
+          <div className={styles.headerLinkContainer}>
+            <div className={styles.headerLink}>
+              <Link href="/profile">
+                <a className="">Profile</a>
+              </Link>
+            </div>
+            <div className={styles.headerLink}>
+              <Link href="/skills">
+                <a className="">Skills</a>
+              </Link>
+            </div>
+            <div className={styles.headerLink}>
+              <Link href="/works">
+                <a className="">Works</a>
+              </Link>
+            </div>
+            <div className={styles.headerLink}>
+              <Link href="/contact">
+                <a className="">Contact</a>
+              </Link>
+            </div>
+          </div>
+        </header>
+        <main className={styles.adjustWidth}>
+          {children}
+          {!home && (
+            <div className={styles.backToHome}>
               <Link href="/">
-                <a className={utilStyles.colorInherit}>{name}</a>
+                <a>&larr; Back to home</a>
               </Link>
-            </h2>
-          </>
-        )} */}
-      </header>
-      <main>{children}</main>
-      {!home && (
-        <div className={styles.backToHome}>
-          <Link href="/">
-            <a>&larr;← Back to home</a>
-          </Link>
-        </div>
-      )}
-      <footer></footer>
+            </div>
+          )}
+        </main>
+      </div>
+      <footer>
+        <small>
+          ©️ 2022 Notchy
+        </small>
+      </footer>
     </div>
   )
 }
