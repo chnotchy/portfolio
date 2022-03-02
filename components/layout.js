@@ -73,8 +73,8 @@ export default function Layout({ children, home }) {
           )}
         </main>
       </div>
-      <footer className={styles.footerSmall}>
-        <small>
+      <footer className={styles.footer}>
+        <small className={styles.footerSmall}>
           ©️ 2022 Notchy
         </small>
       </footer>

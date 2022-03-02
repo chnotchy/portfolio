@@ -8,7 +8,6 @@ export default function Profile() {
           <img className="img" src="/images/profile.jpg"/>
         </div>
         <div className="intro">
-          <div>九州工業大学　情報工学部　1年</div>
           <div>プログラミング、webデザインを学習中</div>
         </div>
       </div>
