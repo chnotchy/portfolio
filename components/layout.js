@@ -24,39 +24,41 @@ export default function Layout({ children, home }) {
           <meta name="twitter:card" content="summary_large_image" />
         </Head>
         <header className={styles.header}>
-          {home ? (
-            <div>
-              <h1 className={styles.headerTitle}>Portfolio</h1>
-            </div>
-          ) : (
-            <div>
-              <Link href="/">
-                <a className={styles.noDecoration}>
-                  <h1 className={styles.headerTitle}>Portfolio</h1>
-                </a>
-              </Link>
-            </div>
-          )}
-          <div className={styles.headerLinkContainer}>
-            <div className={styles.headerLink}>
-              <Link href="/profile">
-                <a className="">Profile</a>
-              </Link>
-            </div>
-            <div className={styles.headerLink}>
-              <Link href="/skills">
-                <a className="">Skills</a>
-              </Link>
-            </div>
-            <div className={styles.headerLink}>
-              <Link href="/works">
-                <a className="">Works</a>
-              </Link>
-            </div>
-            <div className={styles.headerLink}>
-              <Link href="/contact">
-                <a className="">Contact</a>
-              </Link>
+          <div className={`${styles.headerWrapper} ${styles.adjustHeaderWidth}`}>
+            {home ? (
+              <div>
+                <h1 className={styles.headerTitle}>Portfolio</h1>
+              </div>
+            ) : (
+              <div>
+                <Link href="/">
+                  <a className={styles.noDecoration}>
+                    <h1 className={styles.headerTitle}>Portfolio</h1>
+                  </a>
+                </Link>
+              </div>
+            )}
+            <div className={styles.headerLinkContainer}>
+              <div className={styles.headerLink}>
+                <Link href="/profile">
+                  <a className="">Profile</a>
+                </Link>
+              </div>
+              <div className={styles.headerLink}>
+                <Link href="/skills">
+                  <a className="">Skills</a>
+                </Link>
+              </div>
+              <div className={styles.headerLink}>
+                <Link href="/works">
+                  <a className="">Works</a>
+                </Link>
+              </div>
+              <div className={styles.headerLink}>
+                <Link href="/contact">
+                  <a className="">Contact</a>
+                </Link>
+              </div>
             </div>
           </div>
         </header>
@@ -65,7 +67,7 @@ export default function Layout({ children, home }) {
           {!home && (
             <div className={styles.backToHome}>
               <Link href="/">
-                <a>&larr; Back to Home</a>
+                <a className={styles.arr}> Back to Home</a>
               </Link>
             </div>
           )}
