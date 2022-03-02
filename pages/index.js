@@ -8,7 +8,30 @@ export default function Home() {
       <Head>
         <title>Portfolio</title>
       </Head>
-      <section className="">
+      <section>
+        <div className="flex">
+          <div>
+            <img className="img" src="/images/profile.jpg"/>
+          </div>
+          <div className="intro">
+            <div>Welcome to my website!</div>
+          </div>
+        </div>
+        <style jsx>{`
+          .flex {
+            display: flex;
+            margin: 20px 0;
+          }
+          .img {
+            border-radius: 50%;
+            width: 200px;
+            margin: 20px 20px 40px 0;
+          }
+          .intro {
+            padding: 20px;
+            line-height: 1.8em;
+          }
+        `}</style>
       </section>
     </Layout>
   )

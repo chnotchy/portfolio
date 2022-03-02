@@ -65,13 +65,13 @@ export default function Layout({ children, home }) {
           {!home && (
             <div className={styles.backToHome}>
               <Link href="/">
-                <a>&larr; Back to home</a>
+                <a>&larr; Back to Home</a>
               </Link>
             </div>
           )}
         </main>
       </div>
-      <footer>
+      <footer className={styles.footerSmall}>
         <small>
           ©️ 2022 Notchy
         </small>
