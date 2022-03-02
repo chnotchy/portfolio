@@ -8,7 +8,7 @@
 }
 
 .header {
-  line-height: min(80px, 10vh);
+  line-height: clamp(60px, 10vh, 80px);
   background: #4b4e50;
 }
 
