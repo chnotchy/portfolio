@@ -104,7 +104,8 @@ export default function Card() {
             column-gap: 32px;
             row-gap: 32px;
             grid-auto-rows: minmax(160px, auto);
-            grid-template-columns: repeat(auto-fill, max(20%, calc(600px - 50vw)));
+            /* grid-template-columns: repeat(auto-fill, min(360px, 100%, max(200px, 20%, calc(600px - 50vw)))); */
+            grid-template-columns: repeat(auto-fill, min(240px, 100%));
             justify-content: center;
             align-content: center;
           }
