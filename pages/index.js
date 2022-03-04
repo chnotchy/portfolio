@@ -16,7 +16,7 @@ export default function Home() {
           <div className="intro">
             <div>Welcome to my website!</div>
           </div>
-          <Link href="/card"><a className='hidden'>.</a></Link>
+          <Link href="/card"><a>.</a></Link>
         </div>
         <style jsx>{`
           .flex {
@@ -31,9 +31,6 @@ export default function Home() {
           .intro {
             padding: 20px;
             line-height: 1.8em;
-          }
-          .hidden {
-            display: none;
           }
         `}</style>
       </section>
