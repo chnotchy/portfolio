@@ -2,6 +2,10 @@ import Head from 'next/head'
 import styles from './layout.module.css'
 import Link from 'next/link'
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
+import LaptopChromebookRoundedIcon from '@mui/icons-material/LaptopChromebookRounded';
+import AutoAwesomeMotionRoundedIcon from '@mui/icons-material/AutoAwesomeMotionRounded';
+import ChatRoundedIcon from '@mui/icons-material/ChatRounded';
 
 const siteTitle = "Notchy"
 
@@ -63,22 +67,22 @@ export default function Layout({ children, home }) {
               <div className={styles.headerLinkContainer}>
                 <div className={styles.headerLink}>
                   <Link href="/profile">
-                    <a className="">Profile</a>
+                    <a className=""><AccountCircleRoundedIcon sx={{ fontSize: '1.1em', marginRight: '12px', marginBottom: '-0.15em' }} />Profile</a>
                   </Link>
                 </div>
                 <div className={styles.headerLink}>
                   <Link href="/skills">
-                    <a className="">Skills</a>
+                    <a className=""><LaptopChromebookRoundedIcon sx={{ fontSize: '1.1em', marginRight: '12px', marginBottom: '-0.15em' }} />Skills</a>
                   </Link>
                 </div>
                 <div className={styles.headerLink}>
                   <Link href="/works">
-                    <a className="">Works</a>
+                    <a className=""><AutoAwesomeMotionRoundedIcon sx={{ fontSize: '1.1em', marginRight: '12px', marginBottom: '-0.15em' }} />Works</a>
                   </Link>
                 </div>
                 <div className={styles.headerLink}>
                   <Link href="/contact">
-                    <a className="">Contact</a>
+                    <a className=""><ChatRoundedIcon sx={{ fontSize: '1.1em', marginRight: '12px', marginBottom: '-0.2em' }} />Contact</a>
                   </Link>
                 </div>
               </div>
