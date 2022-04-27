@@ -67,3 +67,8 @@
   font-size: clamp(12px, 2.5vw, 16px);
 }
 
+@media screen and (max-width: 500px) {
+  .spHidden {
+    display: none;
+  }
+}
