@@ -67,22 +67,22 @@ export default function Layout({ children, home }) {
               <div className={styles.headerLinkContainer}>
                 <div className={styles.headerLink}>
                   <Link href="/profile">
-                    <a className=""><AccountCircleRoundedIcon sx={{ fontSize: '1.1em', marginRight: '12px', marginBottom: '-0.15em' }} />Profile</a>
+                    <a className=""><AccountCircleRoundedIcon sx={{ fontSize: '1.1em', marginRight: '0.4em', marginBottom: '-0.15em' }} />Profile</a>
                   </Link>
                 </div>
                 <div className={styles.headerLink}>
                   <Link href="/skills">
-                    <a className=""><LaptopChromebookRoundedIcon sx={{ fontSize: '1.1em', marginRight: '12px', marginBottom: '-0.15em' }} />Skills</a>
+                    <a className=""><LaptopChromebookRoundedIcon sx={{ fontSize: '1.1em', marginRight: '0.4em', marginBottom: '-0.15em' }} />Skills</a>
                   </Link>
                 </div>
                 <div className={styles.headerLink}>
                   <Link href="/works">
-                    <a className=""><AutoAwesomeMotionRoundedIcon sx={{ fontSize: '1.1em', marginRight: '12px', marginBottom: '-0.15em' }} />Works</a>
+                    <a className=""><AutoAwesomeMotionRoundedIcon sx={{ fontSize: '1.1em', marginRight: '0.4em', marginBottom: '-0.15em' }} />Works</a>
                   </Link>
                 </div>
                 <div className={styles.headerLink}>
                   <Link href="/contact">
-                    <a className=""><ChatRoundedIcon sx={{ fontSize: '1.1em', marginRight: '12px', marginBottom: '-0.2em' }} />Contact</a>
+                    <a className=""><ChatRoundedIcon sx={{ fontSize: '1.1em', marginRight: '0.4em', marginBottom: '-0.2em' }} />Contact</a>
                   </Link>
                 </div>
               </div>
