@@ -1,12 +1,12 @@
 import Head from 'next/head'
-import Layout from '../components/layout'
+import Layout from '../../../components/layout'
 import Link from 'next/link'
 
 export default function Card() {
   return (
     <Layout>
       <Head>
-        <title>Portfolio</title>
+        <title>グリッドデザイン</title>
       </Head>
       <section>
         <div className='cardSection'>

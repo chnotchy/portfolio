@@ -3,7 +3,7 @@ import Layout from '../components/layout'
 import Link from 'next/link'
 
 export default function Home() {
-  return (
+  return (  
     <Layout home>
       <Head>
         <title>Portfolio</title>
@@ -16,7 +16,6 @@ export default function Home() {
           <div className="intro">
             <div>Welcome to my website!</div>
           </div>
-          <Link href="/card"><a>.</a></Link>
         </div>
         <style jsx>{`
           .flex {
