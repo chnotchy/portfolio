@@ -9,7 +9,7 @@ export default function Skills() {
       </div>
       <div className="container">
         <div className="title">WEB</div>
-        <div className="txt">HTML, CSS, JavaScript</div>
+        <div className="txt">HTML, CSS, JavaScript, MUI</div>
         <div className="txt">ツール…Xd, Figma</div>
       </div>
       <style jsx>{`
