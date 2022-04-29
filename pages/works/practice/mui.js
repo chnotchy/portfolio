@@ -11,6 +11,7 @@ import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import ButtonGroup from '@mui/material/ButtonGroup';
+import MenuItem from '@mui/material/MenuItem';
 
 import CheckIcon from '@mui/icons-material/Check';
 import CloseIcon from '@mui/icons-material/Close';
@@ -25,6 +26,32 @@ import Link from 'next/link'
 
 const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
 const checkedIcon = <CheckBoxIcon fontSize="small" />;
+
+const list10 = [
+  {label: 'A'},
+  {label: 'B'},
+  {label: 'C'},
+  {label: 'D'},
+  {label: 'E'},
+  {label: 'F'},
+  {label: 'G'},
+  {label: 'H'},
+  {label: 'I'},
+  {label: 'J'},
+]
+
+const title10 = [
+  {title: 'A'},
+  {title: 'BB'},
+  {title: 'CCC'},
+  {title: 'DDDD'},
+  {title: 'EEEEE'},
+  {title: 'FFFFFF'},
+  {title: 'GGGGGGG'},
+  {title: 'HHHHHHHH'},
+  {title: 'IIIIIIIII'},
+  {title: 'JJJJJJJJJJ'},
+]
 
 const Root = styled('div')(
   ({ theme }) => `
@@ -198,6 +225,12 @@ export default function CustomizedHook() {
     getOptionLabel: (option) => option.title,
   });
 
+  const [choice, setChoice] = React.useState('A');
+
+  const handleChange = (event) => {
+    setChoice(event.target.value);
+  };
+
   return (
     <Layout>
       <Head>
@@ -298,6 +331,74 @@ export default function CustomizedHook() {
           {buttons}
         </ButtonGroup>
       </Box>
+      <Box>
+        <Box sx={{ marginTop: '32px', fontWeight: 'bold', fontSize: '1.2em' }}>TextField</Box>
+        <Box
+          component="form"
+          sx={{
+            '& > :not(style)': { m: 1, width: '25ch' },
+          }}
+          noValidate
+          autoComplete="off"
+        >
+          <TextField id="outlined-basic" label="Outlined" variant="outlined" />
+          <TextField id="filled-basic" label="Filled" variant="filled" />
+          <TextField id="standard-basic" label="Standard" variant="standard" />
+        </Box>
+        <Box
+          component="form"
+          sx={{
+            '& .MuiTextField-root': { m: 1, width: '25ch' },
+          }}
+          noValidate
+          autoComplete="off"
+        >
+          <TextField
+            id="outlined-select-currency"
+            select
+            label="Select"
+            value={choice}
+            onChange={handleChange}
+            helperText="Please select"
+          >
+            {list10.map((option) => (
+              <MenuItem key={option.label} value={option.label}>
+                {option.label}
+              </MenuItem>
+            ))}
+          </TextField>
+          <TextField
+            id="outlined-select-currency"
+            select
+            label="Select"
+            value={choice}
+            onChange={handleChange}
+            helperText="Please select"
+            variant='filled'
+          >
+            {list10.map((option) => (
+              <MenuItem key={option.label} value={option.label}>
+                {option.label}
+              </MenuItem>
+            ))}
+          </TextField>
+          <TextField
+            id="outlined-select-currency"
+            select
+            label="Select"
+            value={choice}
+            onChange={handleChange}
+            helperText="Please select"
+            variant='standard'
+          >
+            {list10.map((option) => (
+              <MenuItem key={option.label} value={option.label}>
+                {option.label}
+              </MenuItem>
+            ))}
+          </TextField>
+        </Box>
+      </Box>
       <style jsx>{`
         .title {
           margin-top: 32px;
@@ -308,28 +409,3 @@ export default function CustomizedHook() {
   );
 }
 
-const list10 = [
-  {label: 'A'},
-  {label: 'B'},
-  {label: 'C'},
-  {label: 'D'},
-  {label: 'E'},
-  {label: 'F'},
-  {label: 'G'},
-  {label: 'H'},
-  {label: 'I'},
-  {label: 'J'},
-]
-
-const title10 = [
-  {title: 'A'},
-  {title: 'BB'},
-  {title: 'CCC'},
-  {title: 'DDDD'},
-  {title: 'EEEEE'},
-  {title: 'FFFFFF'},
-  {title: 'GGGGGGG'},
-  {title: 'HHHHHHHH'},
-  {title: 'IIIIIIIII'},
-  {title: 'JJJJJJJJJJ'},
-]
