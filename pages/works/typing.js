@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
-import { Box } from '@mui/material'
+import { Box, Divider } from '@mui/material'
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import { styled } from '@mui/material/styles';
@@ -79,6 +79,15 @@ const ThemeSwitch = styled(Switch)(({ theme }) => ({
   },
 }));
 
+const textList = [
+  'The following npm package includes the 2,000+ official Material icons converted to SvgIcon components.',
+  'Hello World!',
+  'Your Welcome.',
+  'This is a pen.',
+  'Have a nice day.',
+  'See you next time!'
+];
+
 export default function Card() {
   const [count, setCount] = useState(100);
 
@@ -90,22 +99,66 @@ export default function Card() {
     setCount(prevCount => prevCount + 1);
   }
 
-  const themeList = [<DarkModeRoundedIcon/>, <LightModeRoundedIcon/>];
-  const boolList = [false, true];
-
-  const [theme, setTheme] = useState(0);
+  const [theme, setTheme] = useState(false);
 
   function darkTheme() {
-    setTheme(0);
+    setTheme(false);
   }
   function switchTheme() {
-    setTheme(prevTheme => 1 - prevTheme);
+    setTheme(prevTheme => ! prevTheme);
   }
   function lightTheme() {
-    setTheme(1);
+    setTheme(true);
   }
 
   const [inputValue, setInputValue] = useState('');
+
+  function changeInputValue(key) {
+    setInputValue(prevInputValue => prevInputValue + key);
+  }
+
+  function startGame() {
+    for (let i = count; i > 0; i--) {
+      setTimeout(() => {
+        setCount(prevCount => prevCount - 1);
+        console.log(count);
+      }, 1000);
+    }
+  }
+
+  const keyNumLis = [32, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 109, 110, 111, 186, 187, 188, 189, 190, 191, 192, 219, 220, 221, 222, 226]
+
+  const inputFunction = useCallback((e) => {
+    // changeInputValue(e.key);
+    let inValue;
+    let k = e.key;
+    let c = e.keyCode;
+    setInputValue((prevInputValue) => {
+      inValue = prevInputValue;
+      if (keyNumLis.includes(c)) {
+        inValue = inValue + k;
+      } else if (c == 8) {
+        inValue = inValue.slice(0, -1);
+      }
+      return inValue;
+    });
+    console.log(`${k}`);
+    console.log(inValue);
+    if (inValue == textList[0]) {
+      console.log('Correct!!')
+    }
+    // if (e.keyCode === Enter) {
+    // if (1) {
+    //     console.log(`${e.key} is pressed!`);
+    // }
+  }, []);
+
+  useEffect(() => {
+    document.addEventListener("keydown", inputFunction, false);
+    return () => {
+      document.removeEventListener("keydown", inputFunction, false);
+    }
+  }, [inputFunction]);
 
   return (
     <Layout>
@@ -128,22 +181,27 @@ export default function Card() {
           <div>
             <div>
               <Button variant='outlined' onClick={darkTheme}><DarkModeRoundedIcon/></Button>
-              <Switch color='default' checked={boolList[theme]} onClick={switchTheme} sx={{ mx: '0.5em' }} />
-              <ThemeSwitch checked={boolList[theme]} onClick={switchTheme} sx={{ mx: '0.5em' }} />
+              <Switch color='default' checked={theme} onClick={switchTheme} sx={{ mx: '0.5em' }} />
+              <ThemeSwitch checked={theme} onClick={switchTheme} sx={{ mx: '0.5em' }} />
               <Button variant='contained' onClick={lightTheme}><LightModeRoundedIcon/></Button>
             </div>
             <div id='label-container'>
-              <FormLabel id='label-txt' component="legend">{themeList[theme]}</FormLabel>
+              <FormLabel id='label-txt' component="legend">{theme ? <LightModeRoundedIcon/> : <DarkModeRoundedIcon/>}</FormLabel>
             </div>
           </div>
         </div>
       </Box>
       <Box sx={{ my: '20px' }}>
         <Box id="q-sentence"></Box>
-        <FormGroup id="form" sx={{ display: 'flex', flexDirection: 'row' }}>
-          <TextField onChange={(event) => setInputValue(event.target.value)} />
-          <Box>{inputValue}</Box>
-          <Button>next</Button>
+        <FormGroup id="form" sx={{  }}>
+          <Box sx={{ position: 'relative' }}>
+            <TextField multiline rows={'1'} onChange={(event) => setInputValue(event.target.value)} placeholder={textList[0]} sx={{ my: '20px', position: 'relativa', width: '100%' }} />
+            <TextField multiline rows={'1'} value={inputValue} sx={{ my: '20px', position: 'absolute', width: '100%', top: '0', left: '0' }} />
+            <TextField multiline rows={'1'} focused={theme} sx={{ my: '20px', position: 'absolute', width: '100%', top: '0', left: '0' }} />
+            <TextField multiline rows={'1'} disabled sx={{ my: '20px', position: 'absolute', width: '100%', top: '0', left: '0', opacity: '0' }} />
+          </Box>
+          {/* <Box>{inputValue}</Box> */}
+          <Button variant='contained' sx={{ mx: 'auto', px: '1em' }}>START</Button>
         </FormGroup>
         <Box id="timer"></Box>
       </Box>
@@ -168,13 +226,6 @@ export default function Card() {
 // const subject = document.getElementById('subject');
 // const timer = document.getElementById('timer');
 // const form = document.forms.typing;
-// const textList = [
-//   'Hello World!',
-//   'Your Welcome.',
-//   'This is a pen.',
-//   'Have a nice day.',
-//   'See you next time!'
-// ];
 
 // let TIME = 20;
 // let count = 0;
