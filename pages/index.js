@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Layout from '../components/layout'
 import Link from 'next/link'
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 
 export default function Home() {
   return (  
@@ -16,6 +17,18 @@ export default function Home() {
           <div className="intro">
             <div>Welcome to my website!</div>
           </div>
+        </div>
+        <div className="container">
+          <a className="title" href="https://github.com/notchcoder/portfolio" target="_blank">
+            このサイトのGitHubリポジトリ
+            <OpenInNewIcon
+              sx={{
+                ml: '0.5em',
+                mb: '-0.1em',
+                fontSize: '1em',
+              }}
+            />
+          </a>
         </div>
         <style jsx>{`
           .flex {
