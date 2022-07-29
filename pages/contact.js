@@ -4,7 +4,14 @@ export default function Contact() {
   return (
     <Layout>
       <div className="container">
-        <a className="title" href="http://twitter.com/chnotchy" target="_blank">Twitter</a>
+        <div className="title">SNS</div>
+        <a className="txt" href="http://twitter.com/chnotchy" target="_blank">Twitter</a>
+      </div>
+      <div className="container">
+        <div className="title">アカウント一覧</div>
+        <a className="txt line" href="https://github.com/notchcoder" target="_blank">GitHub</a>
+        <a className="txt line" href="https://atcoder.jp/users/notchy" target="_blank">AtCoder</a>
+        {/* <a className="txt line" href="#" target="_blank">Hoge</a> */}
       </div>
       <style jsx>{`
         .title {
@@ -15,6 +22,9 @@ export default function Contact() {
         }
         .txt {
           margin-left: 20px;
+        }
+        .line {
+          display: inline-block;
         }
       `}</style>
     </Layout>
