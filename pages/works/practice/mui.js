@@ -12,12 +12,30 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import MenuItem from '@mui/material/MenuItem';
+import SpeedDial from '@mui/material/SpeedDial';
+import SpeedDialAction from '@mui/material/SpeedDialAction';
+
+import Input from '@mui/material/Input';
+import FilledInput from '@mui/material/FilledInput';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import InputLabel from '@mui/material/InputLabel';
+import InputAdornment from '@mui/material/InputAdornment';
+import FormHelperText from '@mui/material/FormHelperText';
+import FormControl from '@mui/material/FormControl';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
+
 
 import CheckIcon from '@mui/icons-material/Check';
 import CloseIcon from '@mui/icons-material/Close';
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import OpenInNewRoundedIcon from '@mui/icons-material/OpenInNewRounded';
+import SpeedDialIcon from '@mui/material/SpeedDialIcon';
+import FileCopyIcon from '@mui/icons-material/FileCopyOutlined';
+import SaveIcon from '@mui/icons-material/Save';
+import PrintIcon from '@mui/icons-material/Print';
+import ShareIcon from '@mui/icons-material/Share';
 
 import PropTypes from 'prop-types';
 import Head from 'next/head'
@@ -231,6 +249,36 @@ export default function CustomizedHook() {
     setChoice(event.target.value);
   };
 
+  const [values, setValues] = React.useState({
+    amount: '',
+    password: '',
+    weight: '',
+    weightRange: '',
+    showPassword: false,
+  });
+
+  const handleChangeP = (prop) => (event) => {
+    setValues({ ...values, [prop]: event.target.value });
+  };
+
+  const handleClickShowPassword = () => {
+    setValues({
+      ...values,
+      showPassword: !values.showPassword,
+    });
+  };
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
+
+  const actions = [
+    { icon: <FileCopyIcon />, name: 'Copy' },
+    { icon: <SaveIcon />, name: 'Save' },
+    { icon: <PrintIcon />, name: 'Print' },
+    { icon: <ShareIcon />, name: 'Share' },
+  ];
+
   return (
     <Layout>
       <Head>
@@ -344,6 +392,24 @@ export default function CustomizedHook() {
           <TextField id="outlined-basic" label="Outlined" variant="outlined" />
           <TextField id="filled-basic" label="Filled" variant="filled" />
           <TextField id="standard-basic" label="Standard" variant="standard" />
+          <Input
+            id="standard-adornment-password"
+            type={values.showPassword ? 'text' : 'password'}
+            value={values.password}
+            onChange={handleChangeP('password')}
+            pattern="(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)(?=.*[,.?/-])[a-zA-Z\d,.?/-]{8,}"
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                >
+                  {values.showPassword ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              </InputAdornment>
+            }
+          />
         </Box>
         <Box
           component="form"
@@ -398,6 +464,66 @@ export default function CustomizedHook() {
             ))}
           </TextField>
         </Box>
+      </Box>
+      <Box>
+        <Box sx={{ marginTop: '32px', fontWeight: 'bold', fontSize: '1.2em' }}>SpeedDial</Box>
+        <Box sx={{ height: 320, transform: 'translateZ(0px)', flexGrow: 1 }}>
+          <SpeedDial
+            ariaLabel="SpeedDial basic example"
+            sx={{ position: 'absolute', bottom: 16, right: 16 }}
+            icon={<SpeedDialIcon />}
+          >
+            {actions.map((action) => (
+              <SpeedDialAction
+                key={action.name}
+                icon={action.icon}
+                tooltipTitle={action.name}
+              />
+            ))}
+          </SpeedDial>
+        </Box>      
+      </Box>
+      <Box>
+        <Box sx={{ marginTop: '32px', fontWeight: 'bold', fontSize: '1.2em' }}>My SpeedDial</Box>
+        <Box sx={{ height: 320, transform: 'translateZ(0px)', flexGrow: 1 }}>
+          <Stack spacing={2} direction="row"
+            sx={{
+              bgcolor: '#777',
+              overflow: 'hidden',
+              width: '48px',
+              height: '48px',
+              padding: 'auto',
+              borderRadius: '24px',
+              transition: '0.2s',
+              ':hover': {
+                bgcolor: '#999',
+                width: '116px'
+              }
+            }}
+          >
+            <IconButton color="primary" aria-label="add to shopping cart"
+              sx={{
+                bgcolor: 'none',
+              }}
+            >
+              <OpenInNewRoundedIcon/>
+            </IconButton>
+            <IconButton color="primary" aria-label="add to shopping cart"
+              sx={{
+                bgcolor: 'none',
+              }}
+            >
+              <OpenInNewRoundedIcon/>
+            </IconButton>
+            <IconButton color="primary" aria-label="add to shopping cart"
+              sx={{
+                bgcolor: 'none',
+              }}
+            >
+              <OpenInNewRoundedIcon/>
+            </IconButton>
+          </Stack>
+        </Box>      
       </Box>
       <style jsx>{`
         .title {
