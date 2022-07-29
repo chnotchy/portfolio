@@ -16,16 +16,18 @@ export default function Works() {
       </div>
       <div className="container">
         <a className="title" href="https://oc2021.compositecomputer.club/" target="_blank">C3オープンキャンパスWebページ</a>
-        <div className="txt">HTML, CSS, Adobe Xd</div>
+        <div className="txt">（部内での共同開発）</div>
+        <div className="txt">Adobe XD, Nuxt, CSS</div>
       </div>
       <div className="container">
-        <div className="title">C3 Official Site（制作中）</div>
-        <a className="txt" href="https://xd.adobe.com/view/2ea8e9f6-2a78-4dc5-9ae5-4f44e2894818-7bfb/" target="_blank">Adobe Xd</a>
+        <a className="title" href="https://compositecomputer.club/" target="_blank">C3 Official Site</a>
+        <div className="txt">（部内での共同開発）</div>
+        <a className="txt" href="https://xd.adobe.com/view/2ea8e9f6-2a78-4dc5-9ae5-4f44e2894818-7bfb/" target="_blank">Adobe XD</a>
       </div>
       <Box sx={{ my: '20px', py: '20px' }}>
         <div className="title">自作ページ</div>
         <div className="container">
-          <Link href="./works/typing"><a>タイピングサイト</a></Link>
+          <Link href="./works/typing"><a>タイピングサイト（制作中）</a></Link>
           <div className="txt">JavaScript</div>
         </div>
         <div className="container">
@@ -49,6 +51,9 @@ export default function Works() {
         }
         .txt {
           margin-left: 20px;
+        }
+        .inline {
+          display: inline;
         }
       `}</style>
     </Layout>
