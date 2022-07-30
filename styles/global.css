@@ -49,3 +49,7 @@ img {
 a h1 {
   color: #eee;
 }
+
+span a::after {
+  background: none;
+}
