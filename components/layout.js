@@ -27,6 +27,7 @@ export default function Layout({ children, home }) {
       <div className={styles.container}>
         <div>
           <Head>
+            <title>Notchy</title>
             <link rel="icon" href="/favicon.png" />
             <meta
               name="description"
