@@ -37,7 +37,7 @@ export default function Layout({ children, home }) {
               content="/og.png"
             />
             <meta name="og:title" content={siteTitle} />
-            <meta name="twitter:card" content="/og.png" />
+            <meta name="twitter:card" content="https://notchy.gajeroll.com/og.png" />
             {/* <link
               rel="stylesheet"
               href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
