@@ -57,3 +57,40 @@ a h1 {
 span a::after {
   background: none;
 }
+
+.material-symbols-rounded {
+  margin-right: 0.4em;
+  transform: translateY(12%);
+  transition: 0.3s;
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 300,
+  'GRAD' 200,
+  'opsz' 48
+}
+
+a:hover .material-symbols-rounded {
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 700,
+  'GRAD' 200,
+  'opsz' 48
+}
+
+/* .bold {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 100,
+  'GRAD' 200,
+  'opsz' 48
+}
+
+.bold:hover {
+  font-size: 2em;
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 800,
+  'GRAD' 200,
+  'opsz' 48
+} */
+

@@ -38,6 +38,7 @@ export default function Layout({ children, home }) {
             />
             <meta name="og:title" content={siteTitle} />
             <meta name="twitter:card" content="https://notchy.gajeroll.com/og.png" />
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
             {/* <link
               rel="stylesheet"
               href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
@@ -68,7 +69,12 @@ export default function Layout({ children, home }) {
                 <div className={styles.headerLink}>
                   <Link href="/profile">
                     <a className="">
-                      <AccountCircleRoundedIcon sx={{ fontSize: '1.1em', marginRight: '0.4em', marginBottom: '-0.15em' }} />
+                      {/* <AccountCircleRoundedIcon sx={{ fontSize: '1.1em', marginRight: '0.4em', marginBottom: '-0.15em' }} /> */}
+                      <span>
+                        <span class="material-symbols-rounded">
+                          account_circle
+                        </span>
+                      </span>
                       <span className={styles.spHidden}>Profile</span>
                     </a>
                   </Link>
@@ -76,7 +82,12 @@ export default function Layout({ children, home }) {
                 <div className={styles.headerLink}>
                   <Link href="/skills">
                     <a className="">
-                      <LaptopChromebookRoundedIcon sx={{ fontSize: '1.1em', marginRight: '0.4em', marginBottom: '-0.15em' }} />
+                      {/* <LaptopChromebookRoundedIcon sx={{ fontSize: '1.1em', marginRight: '0.4em', marginBottom: '-0.15em' }} /> */}
+                      <span>
+                        <span class="material-symbols-rounded">
+                          terminal
+                        </span>
+                      </span>
                       <span className={styles.spHidden}>Skills</span>
                     </a>
                   </Link>
@@ -84,7 +95,12 @@ export default function Layout({ children, home }) {
                 <div className={styles.headerLink}>
                   <Link href="/works">
                     <a className="">
-                      <AutoAwesomeMotionRoundedIcon sx={{ fontSize: '1.1em', marginRight: '0.4em', marginBottom: '-0.15em' }} />
+                      {/* <AutoAwesomeMotionRoundedIcon sx={{ fontSize: '1.1em', marginRight: '0.4em', marginBottom: '-0.15em' }} /> */}
+                      <span>
+                        <span class="material-symbols-rounded">
+                          auto_awesome_motion
+                        </span>
+                      </span>
                       <span className={styles.spHidden}>Works</span>
                     </a>
                   </Link>
@@ -92,7 +108,12 @@ export default function Layout({ children, home }) {
                 <div className={styles.headerLink}>
                   <Link href="/contact">
                     <a className="">
-                      <ChatRoundedIcon sx={{ fontSize: '1.1em', marginRight: '0.4em', marginBottom: '-0.2em' }} />
+                      {/* <ChatRoundedIcon sx={{ fontSize: '1.1em', marginRight: '0.4em', marginBottom: '-0.2em' }} /> */}
+                      <span>
+                        <span class="material-symbols-rounded bold">
+                          chat
+                        </span>
+                      </span>
                       <span className={styles.spHidden}>Contact</span>
                     </a>
                   </Link>
