@@ -13,6 +13,10 @@ body {
   color: #eee;
 }
 
+body {
+  background: #2b3135;
+}
+
 a {
   color: #7bc1f3;
   text-decoration: none;
