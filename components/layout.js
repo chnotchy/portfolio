@@ -7,7 +7,7 @@ import LaptopChromebookRoundedIcon from '@mui/icons-material/LaptopChromebookRou
 import AutoAwesomeMotionRoundedIcon from '@mui/icons-material/AutoAwesomeMotionRounded';
 import ChatRoundedIcon from '@mui/icons-material/ChatRounded';
 
-const siteTitle = "Notchy"
+const siteTitle = "Notchy's Portfolio Website"
 
 const lightTheme = createTheme({
   palette: {
@@ -30,16 +30,14 @@ export default function Layout({ children, home }) {
             <link rel="icon" href="/favicon.png" />
             <meta
               name="description"
-              content="Learn how to build a personal website using Next.js"
+              content="Notchy's portfolio website."
             />
             <meta
               property="og:image"
-              content={`https://og-image.now.sh/${encodeURI(
-                siteTitle
-              )}.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.zeit.co%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`}
+              content="/og.png"
             />
             <meta name="og:title" content={siteTitle} />
-            <meta name="twitter:card" content="summary_large_image" />
+            <meta name="twitter:card" content="/og.png" />
             {/* <link
               rel="stylesheet"
               href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
@@ -52,16 +50,18 @@ export default function Layout({ children, home }) {
           <header className={styles.header}>
             <div className={`${styles.headerWrapper} ${styles.adjustHeaderWidth}`}>
               {home ? (
-                <div>
-                  <h1 className={styles.headerTitle}>Portfolio</h1>
+                <div className={`${styles.center}`}>
+                  <h1 className={styles.headerTitle}>Notchy</h1>
                 </div>
               ) : (
-                <div>
-                  <Link href="/">
-                    <a className={styles.noDecoration}>
-                      <h1 className={styles.headerTitle}>Portfolio</h1>
-                    </a>
-                  </Link>
+                <div className={`${styles.center}`}>
+                  <span>
+                    <Link href="/">
+                      <a className={styles.noDecoration}>
+                        <h1 className={styles.headerTitle}>Notchy</h1>
+                      </a>
+                    </Link>
+                  </span>
                 </div>
               )}
               <div className={styles.headerLinkContainer}>
