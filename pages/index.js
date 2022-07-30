@@ -7,7 +7,7 @@ export default function Home() {
   return (  
     <Layout home>
       <Head>
-        <title>Portfolio</title>
+        <title>Notchy</title>
       </Head>
       <section>
         <div className="flex">

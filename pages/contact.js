@@ -1,8 +1,12 @@
+import Head from 'next/head'
 import Layout from "../components/layout";
 
 export default function Contact() {
   return (
     <Layout>
+      <Head>
+        <title>Contact</title>
+      </Head>
       <div className="container">
         <div className="title">SNS</div>
         <a className="txt" href="http://twitter.com/chnotchy" target="_blank">Twitter</a>

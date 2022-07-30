@@ -1,12 +1,16 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 
+import Head from 'next/head'
 import Layout from "../components/layout";
 import Link from 'next/link'
 
 export default function Works() {
   return (
     <Layout>
+      <Head>
+        <title>Works</title>
+      </Head>
       <Box sx={{ marginTop: '40px', fontWeight: 'bold' }}>
         制作したページ
       </Box>

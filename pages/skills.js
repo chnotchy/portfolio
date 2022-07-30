@@ -1,8 +1,12 @@
+import Head from 'next/head'
 import Layout from "../components/layout";
 
 export default function Skills() {
   return (
     <Layout>
+      <Head>
+        <title>Skills</title>
+      </Head>
       <div className="container">
         <div className="title">プログラミング</div>
         <div className="txt">C, Python</div>
