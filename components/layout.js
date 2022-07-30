@@ -71,7 +71,7 @@ export default function Layout({ children, home }) {
                   <Link href="/profile">
                     <a className="">
                       {/* <AccountCircleRoundedIcon sx={{ fontSize: '1.1em', marginRight: '0.4em', marginBottom: '-0.15em' }} /> */}
-                      <span>
+                      <span className={styles.linkIcon}>
                         <span class="material-symbols-rounded">
                           account_circle
                         </span>
@@ -84,7 +84,7 @@ export default function Layout({ children, home }) {
                   <Link href="/skills">
                     <a className="">
                       {/* <LaptopChromebookRoundedIcon sx={{ fontSize: '1.1em', marginRight: '0.4em', marginBottom: '-0.15em' }} /> */}
-                      <span>
+                      <span className={styles.linkIcon}>
                         <span class="material-symbols-rounded">
                           terminal
                         </span>
@@ -97,7 +97,7 @@ export default function Layout({ children, home }) {
                   <Link href="/works">
                     <a className="">
                       {/* <AutoAwesomeMotionRoundedIcon sx={{ fontSize: '1.1em', marginRight: '0.4em', marginBottom: '-0.15em' }} /> */}
-                      <span>
+                      <span className={styles.linkIcon}>
                         <span class="material-symbols-rounded">
                           auto_awesome_motion
                         </span>
@@ -110,8 +110,8 @@ export default function Layout({ children, home }) {
                   <Link href="/contact">
                     <a className="">
                       {/* <ChatRoundedIcon sx={{ fontSize: '1.1em', marginRight: '0.4em', marginBottom: '-0.2em' }} /> */}
-                      <span>
-                        <span class="material-symbols-rounded bold">
+                      <span className={styles.linkIcon}>
+                        <span class="material-symbols-rounded">
                           chat
                         </span>
                       </span>

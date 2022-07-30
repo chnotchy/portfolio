@@ -59,8 +59,9 @@ span a::after {
 }
 
 .material-symbols-rounded {
-  margin-right: 0.4em;
-  transform: translateY(12%);
+  font-size: clamp(16px, 2.5vw, 24px);
+  margin-right: min(0.4em, 1vw);
+  transform: translateY(0.12em);
   transition: 0.3s;
   font-variation-settings:
   'FILL' 0,
@@ -94,3 +95,13 @@ a:hover .material-symbols-rounded {
   'opsz' 48
 } */
 
+@media screen and (max-width: 580px) {
+  a::after {
+    background: none;
+  }
+
+  .material-symbols-rounded {
+    font-size: clamp(20px, 6vw, 320px);
+    transform: translateY(0);
+  }
+}
