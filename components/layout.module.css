@@ -31,6 +31,58 @@
   align-items: center;
 }
 
+.img {
+  border-radius: 50%;
+  width: 200px;
+  margin: 20px 20px 40px 0;
+  overflow: hidden;
+}
+
+.noDecoration h1 {
+  font-size: clamp(18px, 5vw, 2rem);
+  font-family: 'Quicksand';
+  color: #fff0;
+  background: linear-gradient(to right, #30a3f0, #31deb0);
+  padding: 0.1em 0.3em 0.25em 0.3em;
+  border-radius: 0.26em;
+  line-height: 1em;
+  position: relative;
+  z-index: 1;
+  transition: .3s;
+}
+
+.noDecoration h1::after {
+  content: "Notchy";
+  font-size: clamp(18px, 5vw, 2rem);
+  font-family: 'Quicksand';
+  padding: 0.1em 0.3em 0.25em 0.3em;
+  line-height: 1em;
+  z-index: 2;
+  transition: .3s;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: linear-gradient(to right, #50b5f8, #48f6c8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.noDecoration h1::before {
+  content: "";
+  background: #4b4e50;
+  border-radius: 0.25em;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: -1;
+  box-sizing: border-box;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background-clip: content-box;
+  transition: .3s;
+}
+
 .headerTitle {
   font-size: clamp(18px, 5vw, 2rem);
   font-family: 'Quicksand';
@@ -76,16 +128,16 @@
   transition: .3s;
 }
 
-.headerTitle:hover {
+.noDecoration h1:hover {
   color: #fff;
   border-radius: 0.25em;
 }
 
-.headerTitle:hover::after {
+.noDecoration h1:hover::after {
   opacity: 0;
 }
 
-.headerTitle:hover::before {
+.noDecoration h1:hover::before {
   background: #4b4e5055;
   border-radius: 0.25em;
   top: 0;
@@ -96,7 +148,7 @@
   background-clip: content-box;
 }
 
-/* .headerTitle:hover:before {
+/* .noDecoration h1:hover:before {
   background: transparent;
   box-sizing: border-box;
   background-clip: content-box;
