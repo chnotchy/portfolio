@@ -3,6 +3,7 @@
 .container {
   font-family: "Inter", sans-serif;
   min-height: 100vh;
+  min-height: 100dvh;
   margin: auto;
   background-color: #2b3135;
   display: flex;
