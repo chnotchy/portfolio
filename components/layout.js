@@ -69,9 +69,9 @@ export default function Layout({ children, home }) {
               <div className={styles.headerLinkContainer}>
                 <div className={styles.headerLink}>
                   <Link href="/profile">
-                    <a className="">
+                    <a className={styles.button}>
                       {/* <AccountCircleRoundedIcon sx={{ fontSize: '1.1em', marginRight: '0.4em', marginBottom: '-0.15em' }} /> */}
-                      <span className={styles.linkIcon}>
+                      <span className={`${styles.linkIcon} ${styles.icone853}`}>
                         <span class="material-symbols-rounded">
                           account_circle
                         </span>
@@ -82,9 +82,9 @@ export default function Layout({ children, home }) {
                 </div>
                 <div className={styles.headerLink}>
                   <Link href="/skills">
-                    <a className="">
+                    <a className={styles.button}>
                       {/* <LaptopChromebookRoundedIcon sx={{ fontSize: '1.1em', marginRight: '0.4em', marginBottom: '-0.15em' }} /> */}
-                      <span className={styles.linkIcon}>
+                      <span className={`${styles.linkIcon} ${styles.iconeb8e}`}>
                         <span class="material-symbols-rounded">
                           terminal
                         </span>
@@ -95,9 +95,9 @@ export default function Layout({ children, home }) {
                 </div>
                 <div className={styles.headerLink}>
                   <Link href="/works">
-                    <a className="">
+                    <a className={styles.button}>
                       {/* <AutoAwesomeMotionRoundedIcon sx={{ fontSize: '1.1em', marginRight: '0.4em', marginBottom: '-0.15em' }} /> */}
-                      <span className={styles.linkIcon}>
+                      <span className={`${styles.linkIcon} ${styles.icone661}`}>
                         <span class="material-symbols-rounded">
                           auto_awesome_motion
                         </span>
@@ -108,9 +108,9 @@ export default function Layout({ children, home }) {
                 </div>
                 <div className={styles.headerLink}>
                   <Link href="/contact">
-                    <a className="">
+                    <a className={styles.button}>
                       {/* <ChatRoundedIcon sx={{ fontSize: '1.1em', marginRight: '0.4em', marginBottom: '-0.2em' }} /> */}
-                      <span className={styles.linkIcon}>
+                      <span className={`${styles.linkIcon} ${styles.icone0b7}`}>
                         <span class="material-symbols-rounded">
                           chat
                         </span>
