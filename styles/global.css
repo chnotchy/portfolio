@@ -59,7 +59,7 @@ span a::after {
 }
 
 .material-symbols-rounded {
-  font-size: clamp(16px, 2.5vw, 24px);
+  /* font-size: clamp(16px, 2.5vw, 24px); */
   margin-right: min(0.4em, 1vw);
   transform: translateY(0.12em);
   transition: 0.3s;
@@ -84,7 +84,7 @@ a:hover .material-symbols-rounded {
   }
 
   .material-symbols-rounded {
-    font-size: clamp(20px, 6vw, 320px);
+    /* font-size: clamp(20px, 6vw, 320px); */
     transform: translateY(0);
   }
 }
