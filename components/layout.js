@@ -30,15 +30,16 @@ export default function Layout({ children, home }) {
             <title>Notchy</title>
             <link rel="icon" href="/favicon.png" />
             <meta
-              name="og:description"
+              name="description"
               content="Notchy's portfolio website."
             />
             <meta
               property="og:image"
               content="/og.png"
             />
-            <meta name="og:title" content={siteTitle} />
-            <meta name="og:url" content="/" />
+            <meta property="og:description" content="Notchy's portfolio website." />
+            <meta property="og:title" content={siteTitle} />
+            <meta property="og:url" content="/" />
             <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:site" content="@chnotchy" />
             <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
