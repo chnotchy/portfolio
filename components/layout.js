@@ -39,7 +39,7 @@ export default function Layout({ children, home }) {
             />
             <meta name="og:title" content={siteTitle} />
             <meta name="og:url" content="/" />
-            <meta name="twitter:card" content="sammary_large_image" />
+            <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:site" content="@chnotchy" />
             <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
             {/* <link
