@@ -35,7 +35,8 @@ export default function Layout({ children, home }) {
             />
             <meta
               property="og:image"
-              content="/og.png"
+              content="https://notchy.gajeroll.com/og.png"
+              // content="/og.png"
             />
             <meta property="og:description" content="Notchy's portfolio website." />
             <meta property="og:title" content={siteTitle} />
