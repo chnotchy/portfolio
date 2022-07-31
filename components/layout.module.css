@@ -204,14 +204,30 @@
 
   .adjustHeaderWidth {
     width: 100%;
-    padding-left: 5vw;
+    padding-left: 4vw;
   }
 
+  .noDecoration h1 {
+    font-size: clamp(22px, 8vw, 2rem);
+  }
+  
+  .noDecoration h1::after {
+    font-size: clamp(22px, 8vw, 2rem);
+  }
+  
+  .headerTitle {
+    font-size: clamp(22px, 8vw, 2rem);
+  }
+  
+  .headerTitle::after {
+    font-size: clamp(22px, 8vw, 2rem);
+  }
+  
   .headerLinkContainer {
     display: flex;
     justify-content: space-evenly;
     width: min(100%, 600px);
-    margin-left: 20%;
+    margin-left: 8%;
   }
   
   .linkIcon {
