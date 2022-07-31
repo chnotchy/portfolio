@@ -30,7 +30,7 @@ export default function Layout({ children, home }) {
             <title>Notchy</title>
             <link rel="icon" href="/favicon.png" />
             <meta
-              name="description"
+              name="og:description"
               content="Notchy's portfolio website."
             />
             <meta
@@ -38,7 +38,9 @@ export default function Layout({ children, home }) {
               content="/og.png"
             />
             <meta name="og:title" content={siteTitle} />
-            <meta name="twitter:card" content="https://notchy.gajeroll.com/og.png" />
+            <meta name="og:url" content="/" />
+            <meta name="twitter:card" content="sammary_large_image" />
+            <meta name="twitter:site" content="@chnotchy" />
             <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
             {/* <link
               rel="stylesheet"
