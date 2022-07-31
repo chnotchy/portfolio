@@ -59,8 +59,7 @@ span a::after {
 }
 
 .material-symbols-rounded {
-  font-size: 2.5vw;
-  /* font-size: clamp(16px, 2.5vw, 24px); */
+  font-size: clamp(16px, 2.5vw, 24px);
   margin-right: min(0.4em, 1vw);
   transform: translateY(0.12em);
   transition: 0.3s;
@@ -79,31 +78,13 @@ a:hover .material-symbols-rounded {
   'opsz' 48
 }
 
-/* .bold {
-  font-variation-settings:
-  'FILL' 0,
-  'wght' 100,
-  'GRAD' 200,
-  'opsz' 48
-}
-
-.bold:hover {
-  font-size: 2em;
-  font-variation-settings:
-  'FILL' 0,
-  'wght' 800,
-  'GRAD' 200,
-  'opsz' 48
-} */
-
 @media screen and (max-width: 580px) {
   a::after {
     background: none;
   }
 
   .material-symbols-rounded {
-    font-size: 6vw;
-    /* font-size: clamp(20px, 6vw, 320px); */
+    font-size: clamp(20px, 6vw, 320px);
     transform: translateY(0);
   }
 }
