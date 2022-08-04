@@ -41,6 +41,7 @@ export default function Layout({ children, home }) {
             <meta property="og:description" content="Notchy's portfolio website." />
             <meta property="og:title" content={siteTitle} />
             <meta property="og:url" content="/" />
+            <meta name="theme-color" content="#30a3f0" />
             <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:site" content="@chnotchy" />
             <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
