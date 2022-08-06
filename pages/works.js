@@ -88,7 +88,7 @@ export default function Works() {
           padding: none;
           width: min(80vh, 80vw);
           height: min(45vh, 45vw);
-          overflow: scroll;
+          overflow: hidden;
           resize: both;
           position: relative;
         }
