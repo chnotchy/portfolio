@@ -58,6 +58,10 @@ span a::after {
   background: none;
 }
 
+::-webkit-resizer {
+  display: none;
+}
+
 .material-symbols-rounded {
   visibility: hidden;
   font-size: clamp(16px, 2.5vw, 24px);
