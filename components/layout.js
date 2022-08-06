@@ -25,35 +25,35 @@ export default function Layout({ children, home }) {
   return (
     <ThemeProvider theme={darkTheme}>
       <div className={styles.container}>
+        <Head>
+          <title>Notchy</title>
+          <link rel="icon" href="/favicon.png" />
+          <meta
+            name="description"
+            content="Notchy's portfolio website."
+          />
+          <meta
+            property="og:image"
+            content="https://notchy.gajeroll.com/og.png"
+            // content="/og.png"
+          />
+          <meta property="og:description" content="Notchy's portfolio website." />
+          <meta property="og:title" content={siteTitle} />
+          <meta property="og:url" content="/" />
+          <meta name="theme-color" content="#30a3f0" />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:site" content="@chnotchy" />
+          <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+          {/* <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+          /> */}
+          {/* <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          /> */}
+        </Head>
         <div>
-          <Head>
-            <title>Notchy</title>
-            <link rel="icon" href="/favicon.png" />
-            <meta
-              name="description"
-              content="Notchy's portfolio website."
-            />
-            <meta
-              property="og:image"
-              content="https://notchy.gajeroll.com/og.png"
-              // content="/og.png"
-            />
-            <meta property="og:description" content="Notchy's portfolio website." />
-            <meta property="og:title" content={siteTitle} />
-            <meta property="og:url" content="/" />
-            <meta name="theme-color" content="#30a3f0" />
-            <meta name="twitter:card" content="summary_large_image" />
-            <meta name="twitter:site" content="@chnotchy" />
-            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-            {/* <link
-              rel="stylesheet"
-              href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-            /> */}
-            {/* <link
-              rel="stylesheet"
-              href="https://fonts.googleapis.com/icon?family=Material+Icons"
-            /> */}
-          </Head>
           <header className={styles.header}>
             <div className={`${styles.headerWrapper} ${styles.adjustHeaderWidth}`}>
               {home ? (
