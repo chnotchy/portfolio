@@ -123,9 +123,9 @@ export default function App() {
                 margin: '10px',
                 mx: '20px',
                 transition: '0.3s',
-                '&:hover span span:last-child': {
-                  width: '30px',
-                },
+                // '&:hover span span:last-child': {
+                //   width: '30px',
+                // },
                 '--Switch-thumb-size': '28px',
                 '--Switch-track-width': '64px',
                 '--Switch-track-height': '32px',
@@ -176,9 +176,9 @@ export default function App() {
                 margin: '10px',
                 mx: '20px',
                 transition: '0.3s',
-                '&:hover span span:last-child': {
-                  width: '30px',
-                },
+                // '&:hover span span:last-child': {
+                //   width: '30px',
+                // },
                 '--Switch-thumb-size': '28px',
                 '--Switch-track-width': '64px',
                 '--Switch-track-height': '32px',
