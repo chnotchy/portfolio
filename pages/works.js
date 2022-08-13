@@ -68,6 +68,10 @@ export default function Works() {
             <Link href="./works/practice/mui"><a>MUI</a></Link>
             <div className="txt">様々なMUIコンポーネント</div>
           </div>
+          <div className='container'>
+            <Link href="./works/practice/joy"><a>Joy UI</a></Link>
+            <div className="txt">様々なJoy UIコンポーネント</div>
+          </div>
         </div>
       </Box>
       <style jsx>{`
