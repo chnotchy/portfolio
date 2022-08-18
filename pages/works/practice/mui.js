@@ -14,6 +14,10 @@ import ButtonGroup from '@mui/material/ButtonGroup';
 import MenuItem from '@mui/material/MenuItem';
 import SpeedDial from '@mui/material/SpeedDial';
 import SpeedDialAction from '@mui/material/SpeedDialAction';
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Switch, { SwitchProps } from '@mui/material/Switch';
+import Typography from '@mui/material/Typography';
 
 import Input from '@mui/material/Input';
 import FilledInput from '@mui/material/FilledInput';
@@ -36,6 +40,8 @@ import FileCopyIcon from '@mui/icons-material/FileCopyOutlined';
 import SaveIcon from '@mui/icons-material/Save';
 import PrintIcon from '@mui/icons-material/Print';
 import ShareIcon from '@mui/icons-material/Share';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
+import LightModeIcon from '@mui/icons-material/LightMode';
 
 import PropTypes from 'prop-types';
 import Head from 'next/head'
@@ -217,6 +223,103 @@ const Listbox = styled('ul')(
 `,
 );
 
+const Android12Switch = styled(Switch)(({ theme }) => ({
+  padding: 8,
+  '& .MuiSwitch-track': {
+    borderRadius: 22 / 2,
+    '&:before, &:after': {
+      content: '""',
+      position: 'absolute',
+      top: '50%',
+      transform: 'translateY(-50%)',
+      width: 16,
+      height: 16,
+    },
+    '&:before': {
+      backgroundImage: `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 24 24"><path fill="${encodeURIComponent(
+        theme.palette.getContrastText(theme.palette.primary.main),
+      )}" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"/></svg>')`,
+      left: 12,
+    },
+    '&:after': {
+      backgroundImage: `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 24 24"><path fill="${encodeURIComponent(
+        theme.palette.getContrastText(theme.palette.primary.main),
+      )}" d="M19,13H5V11H19V13Z" /></svg>')`,
+      right: 12,
+    },
+  },
+  '& .MuiSwitch-thumb': {
+    boxShadow: 'none',
+    width: 16,
+    height: 16,
+    margin: 2,
+  },
+}));
+
+const ThemeSwitch = styled(Switch)(({ theme }) => ({
+  padding: 8,
+  '& .MuiSwitch-track': {
+    borderRadius: 22 / 2,
+    '&:before, &:after': {
+      content: '""',
+      position: 'absolute',
+      top: '50%',
+      transform: 'translateY(-50%)',
+      width: 16,
+      height: 16,
+    },
+    '&:before': {
+      // content: '`${<LightModeIcon />`}',
+      left: 12,
+    },
+    '&:after': {
+      backgroundImage: `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 24 24"><path fill="${encodeURIComponent(
+        theme.palette.getContrastText(theme.palette.primary.main),
+      )}" d="M19,13H5V11H19V13Z" /></svg>')`,
+      right: 12,
+    },
+  },
+  '& .MuiSwitch-thumb': {
+    background: '#fff',
+    boxShadow: 'none',
+    width: 16,
+    height: 16,
+    margin: 2,
+  },
+}));
+
+const LanguageSwitch = styled(Switch)(({ theme }) => ({
+  padding: 8,
+  '& .MuiSwitch-track': {
+    borderRadius: 22 / 2,
+    '&:before, &:after': {
+      content: '""',
+      position: 'absolute',
+      top: '50%',
+      transform: 'translateY(-50%)',
+      width: 16,
+      height: 16,
+      fontSize: 8,
+      color: '#fff',
+    },
+    '&:before': {
+      content: '"EN"',
+      left: '14px',
+    },
+    '&:after': {
+      content: '"JP"',
+      right: '14px',
+    },
+  },
+  '& .MuiSwitch-thumb': {
+    background: '#fff',
+    boxShadow: 'none',
+    width: 16,
+    height: 16,
+    margin: 2,
+  },
+}));
+
 const buttons = [
   <Button key="one">One</Button>,
   <Button key="two">Two</Button>,
@@ -340,6 +443,23 @@ export default function CustomizedHook() {
             <TextField {...params} label="Checkboxes" placeholder="Favorites" />
           )}
         />
+      </Box>
+      <Box>
+        <Box sx={{ marginTop: '32px', fontWeight: 'bold', fontSize: '1.2em' }}>Switch</Box>
+        <FormGroup>
+          <FormControlLabel
+            control={<Android12Switch defaultChecked />}
+            label="Android 12"
+          />
+          <FormControlLabel
+            control={<ThemeSwitch defaultChecked />}
+            label="Theme"
+          />
+          <FormControlLabel
+            control={<LanguageSwitch defaultChecked />}
+            label="Language"
+          />
+        </FormGroup>
       </Box>
       <Box>
         <Box sx={{ marginTop: '32px', fontWeight: 'bold', fontSize: '1.2em' }}>Button</Box>
