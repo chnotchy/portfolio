@@ -10,8 +10,7 @@
   Cross-Origin-Opener-Policy: same-origin
   # 静的エクスポートでは nonce を発行できず、Next が埋め込む inline script の
   # ハッシュはビルドごとに変わるため script-src は 'unsafe-inline' が必要。
-  # frame-src は works ページの埋め込み 3 件のみ。
-  Content-Security-Policy-Report-Only: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-src https://oc2021.compositecomputer.club http://www.hcyuko.hiroshima-c.ed.jp https://compositecomputer.club; frame-ancestors 'none'; base-uri 'none'; form-action 'none'; object-src 'none'
+  Content-Security-Policy-Report-Only: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-src 'none'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'; object-src 'none'
 
 # ファイル名がハッシュ化されている。
 /_next/static/*

@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     locale: 'ja_JP',
     title: siteName,
     description,
-    images: ['/og.png'],
+    images: [{ url: '/og.png', width: 1200, height: 630 }],
   },
   twitter: {
     card: 'summary_large_image',
