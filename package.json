@@ -30,7 +30,8 @@
     "postcss": "8.5.25",
     "prettier": "3.9.6",
     "tailwindcss": "4.3.3",
-    "typescript": "6.0.3"
+    "typescript": "6.0.3",
+    "wrangler": "4.118.0"
   },
   "volta": {
     "node": "24.19.0"

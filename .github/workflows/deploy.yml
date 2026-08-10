@@ -50,9 +50,9 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          # wrangler は devDependency として lockfile に固定してあり、action はそれを使う。
+          # 未導入だと action が実行時に最新版を取得してしまう。
           packageManager: pnpm
-          # 未指定だと action が wrangler の最新版を実行時に取得し、クールダウンを迂回する。
-          wranglerVersion: '4.118.0'
           command: pages deploy out --project-name=chnotchy --branch=${{ github.head_ref || github.ref_name }}
 
       - name: Comment preview URL on PR

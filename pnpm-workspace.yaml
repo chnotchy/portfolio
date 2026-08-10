@@ -13,8 +13,11 @@ trustPolicy: no-downgrade
 trustPolicyIgnoreAfter: 129600
 
 allowBuilds:
-  # ビルド済みバイナリが同梱されるため postinstall は不要。
+  # いずれもプラットフォーム別のビルド済みバイナリが optionalDependencies で入るため
+  # postinstall は不要。
   unrs-resolver: false
+  esbuild: false
+  workerd: false
 
 # next の optional dependency。画像最適化サーバー用なので
 # output: 'export' + images.unoptimized では使われない。
