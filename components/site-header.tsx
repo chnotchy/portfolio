@@ -72,9 +72,10 @@ export function SiteHeader() {
         </div>
       </div>
 
+      {/* 背後のページ内容が透けないよう、ガラスではなく不透明にする。 */}
       {isMenuOpen && (
-        <div id="site-menu" className="border-border-subtle border-t md:hidden">
-          <nav aria-label="サイト内ナビゲーション" className="container-wide flex flex-col py-2">
+        <div id="site-menu" className="bg-surface border-border-subtle border-t md:hidden">
+          <nav aria-label="メニュー" className="container-wide flex flex-col py-2">
             {pageLinks.map(({ href, label, description }) => (
               <Link
                 key={href}

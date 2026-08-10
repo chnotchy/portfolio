@@ -25,6 +25,7 @@
 
 /* @theme の出力は theme レイヤー内なので、レイヤー外のこの宣言が優先される。 */
 .dark {
+  color-scheme: dark;
   --color-surface: #000000;
   --color-surface-secondary: #161617;
   --color-surface-tertiary: #1c1c1e;
@@ -38,10 +39,6 @@
 @layer base {
   :root {
     color-scheme: light;
-  }
-
-  .dark {
-    color-scheme: dark;
   }
 
   html {
@@ -65,7 +62,6 @@
   :focus-visible {
     outline: 2px solid var(--color-ink);
     outline-offset: 2px;
-    border-radius: 2px;
   }
 
   ::selection {
@@ -97,6 +93,25 @@
   animation-duration: 0.6s;
   animation-timing-function: var(--ease-out-expo);
   animation-fill-mode: both;
+}
+
+/* 子要素の入場を 40ms ずつずらす。fade-up と組み合わせて使う。 */
+@utility stagger {
+  & > *:nth-child(2) {
+    animation-delay: 40ms;
+  }
+  & > *:nth-child(3) {
+    animation-delay: 80ms;
+  }
+  & > *:nth-child(4) {
+    animation-delay: 120ms;
+  }
+  & > *:nth-child(5) {
+    animation-delay: 160ms;
+  }
+  & > *:nth-child(n + 6) {
+    animation-delay: 200ms;
+  }
 }
 
 @keyframes fade-up {
