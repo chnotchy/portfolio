@@ -3,167 +3,134 @@
 /* Turbopack では自動検出が取りこぼすことがある。 */
 @source '../app/**/*.{ts,tsx}';
 @source '../components/**/*.{ts,tsx}';
+@source '../content/**/*.ts';
+
+@custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  /* Tailwind 既定の 640px を上書きし、ブレークポイントを 580px の 1 本に統一する。 */
-  --breakpoint-sm: 580px;
+  --color-surface: #ffffff;
+  --color-surface-secondary: #f5f5f7;
+  --color-surface-tertiary: #fbfbfd;
+  --color-ink: #1d1d1f;
+  --color-ink-secondary: #6e6e73;
+  --color-ink-tertiary: #86868b;
+  --color-border: #d2d2d7;
+  --color-border-subtle: #e8e8ed;
 
-  --color-surface: #2b3135;
-  --color-surface-raised: #4b4e50;
-  --color-ink: #eeeeee;
-  --color-ink-muted: #aaaaaa;
-  --color-link: #7bc1f3;
-  --color-link-hover: #cccccc;
+  --font-sans:
+    var(--font-inter), 'Hiragino Sans', 'Noto Sans JP', ui-sans-serif, system-ui, sans-serif;
 
-  /* ロゴのグラデーション。外枠側と文字側で明度を変えている。 */
-  --color-brand-start: #30a3f0;
-  --color-brand-end: #31deb0;
-  --color-brand-start-light: #50b5f8;
-  --color-brand-end-light: #48f6c8;
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
 
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-quicksand), ui-sans-serif, system-ui, sans-serif;
+/* @theme の出力は theme レイヤー内なので、レイヤー外のこの宣言が優先される。 */
+.dark {
+  color-scheme: dark;
+  --color-surface: #000000;
+  --color-surface-secondary: #161617;
+  --color-surface-tertiary: #1c1c1e;
+  --color-ink: #f5f5f7;
+  --color-ink-secondary: #a1a1a6;
+  --color-ink-tertiary: #6e6e73;
+  --color-border: #38383a;
+  --color-border-subtle: #2c2c2e;
 }
 
 @layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    /* 固定ヘッダーの下にアンカー先が隠れないようにする。 */
+    scroll-padding-top: 5rem;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
   body {
     background-color: var(--color-surface);
     color: var(--color-ink);
     font-family: var(--font-sans);
-    /* ルートを 20px にすると Tailwind の rem スケール全体がずれるため、本文側で指定する。 */
-    font-size: 1.25rem;
-    line-height: 1.6;
+    line-height: 1.75;
+    transition:
+      background-color 0.3s var(--ease-out-expo),
+      color 0.3s var(--ease-out-expo);
   }
 
-  img {
-    max-width: 100%;
-    display: block;
+  :focus-visible {
+    outline: 2px solid var(--color-ink);
+    outline-offset: 2px;
   }
 
-  a {
-    color: var(--color-link);
-    text-decoration: none;
-    position: relative;
-    transition: 0.3s;
-  }
-
-  a:hover {
-    color: var(--color-link-hover);
-  }
-
-  a::after {
-    content: '';
-    position: absolute;
-    left: 50%;
-    top: 110%;
-    width: 0;
-    height: 2px;
-    border-radius: 1px;
-    background: var(--color-link-hover);
-    transition: 0.3s;
-  }
-
-  a:hover::after {
-    width: 68%;
-    left: 16%;
-  }
-
-  @media (width <= 580px) {
-    a::after {
-      background: none;
-    }
-  }
-
-  /* リサイズの掴み手は works ページ側でアイコンを重ねて描いている。 */
-  ::-webkit-resizer {
-    display: none;
+  ::selection {
+    background-color: var(--color-ink);
+    color: var(--color-surface);
   }
 }
 
-/*
- * 3 層構成。本体のグラデーションを ::before がヘッダー地色で覆い、外周だけを縁として残す。
- * 文字は ::after が別のグラデーションで塗り直す。
- * ホバー時は ::before を半透明にして地のグラデーションを透かす。
- */
-.site-logo {
-  position: relative;
-  z-index: 1;
-  display: inline-block;
-  padding: 0.1em 0.3em 0.25em;
-  border-radius: 0.26em;
-  font-family: var(--font-display);
-  font-size: clamp(18px, 5vw, 2rem);
-  line-height: 1em;
-  color: transparent;
-  background: linear-gradient(to right, var(--color-brand-start), var(--color-brand-end));
-  transition: 0.3s;
+@utility container-wide {
+  max-width: 1080px;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
 }
 
-.site-logo::before {
-  content: '';
-  position: absolute;
-  top: -0.5%;
-  right: -0.5%;
-  z-index: -1;
-  width: 101%;
-  height: 101%;
-  padding: 0;
-  border-radius: 0.25em;
-  background: var(--color-surface-raised);
-  background-clip: content-box;
-  transition: 0.3s;
+@utility container-narrow {
+  max-width: 720px;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
 }
 
-.site-logo::after {
-  content: attr(data-text);
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 2;
-  /* 下線演出の指定を打ち消す。 */
-  width: auto;
-  height: auto;
-  border-radius: 0;
-  padding: 0.1em 0.3em 0.25em;
-  font-size: clamp(18px, 5vw, 2rem);
-  line-height: 1em;
-  background: linear-gradient(
-    to right,
-    var(--color-brand-start-light),
-    var(--color-brand-end-light)
-  );
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  transition: 0.3s;
+@utility glass {
+  background-color: color-mix(in srgb, var(--color-surface) 72%, transparent);
+  backdrop-filter: saturate(180%) blur(20px);
 }
 
-a:hover .site-logo {
-  color: #fff;
-  border-radius: 0.25em;
+/* animation 短縮形は animation-delay を巻き戻すため、個別プロパティで指定する。 */
+@utility fade-up {
+  animation-name: fade-up;
+  animation-duration: 0.6s;
+  animation-timing-function: var(--ease-out-expo);
+  animation-fill-mode: both;
 }
 
-a:hover .site-logo::after {
-  opacity: 0;
+/* 子要素の入場を 40ms ずつずらす。fade-up と組み合わせて使う。 */
+@utility stagger {
+  & > *:nth-child(2) {
+    animation-delay: 40ms;
+  }
+  & > *:nth-child(3) {
+    animation-delay: 80ms;
+  }
+  & > *:nth-child(4) {
+    animation-delay: 120ms;
+  }
+  & > *:nth-child(5) {
+    animation-delay: 160ms;
+  }
+  & > *:nth-child(n + 6) {
+    animation-delay: 200ms;
+  }
 }
 
-a:hover .site-logo::before {
-  top: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-  padding: 0.07em;
-  border-radius: 0.25em;
-  background: color-mix(in srgb, var(--color-surface-raised) 33%, transparent);
-  background-clip: content-box;
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.site-logo-link::after {
-  display: none;
-}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 
-@media (width <= 580px) {
-  .site-logo,
-  .site-logo::after {
-    font-size: clamp(22px, 8vw, 2rem);
+  .fade-up {
+    animation: none;
   }
 }

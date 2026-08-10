@@ -27,6 +27,11 @@ pnpm dev
 
 依存の解決ポリシーは [pnpm-workspace.yaml](pnpm-workspace.yaml) を参照。
 
+## 構成
+
+掲載内容は `content/` に集約している。デザイントークンは
+[app/globals.css](app/globals.css) の `@theme` で定義し、`.dark` で上書きする。
+
 ## デプロイ
 
 `main` への push で GitHub Actions が Cloudflare Pages へデプロイする。

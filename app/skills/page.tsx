@@ -1,30 +1,30 @@
 import type { Metadata } from 'next'
 
-import { BackToHome } from '@/components/back-to-home'
+import { PageHeader } from '@/components/page-header'
+import { SkillCard } from '@/components/skill-card'
+import { skillGroups } from '@/content/skills'
 
 export const metadata: Metadata = {
   title: 'Skills',
+  description: '扱える言語・フレームワーク・ツールの一覧。',
 }
-
-const skillGroups = [
-  { title: 'プログラミング', items: ['C, Python'] },
-  { title: 'WEB', items: ['HTML, CSS, JavaScript, MUI', 'ツール…Xd, Figma'] },
-]
 
 export default function Skills() {
   return (
     <>
-      {skillGroups.map(({ title, items }) => (
-        <div key={title} className="p-5">
-          <h2 className="font-bold">{title}</h2>
-          {items.map((item) => (
-            <p key={item} className="pl-5">
-              {item}
-            </p>
+      <PageHeader
+        title="Skills"
+        description="実際に手を動かして使ったことのあるものを挙げています。"
+      />
+      <section className="container-wide pb-24">
+        <div className="stagger grid grid-cols-1 gap-5 sm:grid-cols-2">
+          {skillGroups.map((group) => (
+            <div key={group.title} className="fade-up">
+              <SkillCard group={group} headingAs="h2" />
+            </div>
           ))}
         </div>
-      ))}
-      <BackToHome />
+      </section>
     </>
   )
 }
