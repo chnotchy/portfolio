@@ -1,0 +1,40 @@
+version: 2
+updates:
+  # cooldown は pnpm-workspace.yaml の minimumReleaseAge と揃える。
+  # 短いと、インストールできないバージョンの PR が来る。
+  - package-ecosystem: 'npm'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+    open-pull-requests-limit: 5
+    cooldown:
+      default-days: 7
+      semver-major-days: 30
+    groups:
+      next:
+        patterns:
+          - 'next'
+          - 'eslint-config-next'
+          - 'react'
+          - 'react-dom'
+          - '@types/react'
+          - '@types/react-dom'
+      tailwind:
+        patterns:
+          - 'tailwindcss'
+          - '@tailwindcss/*'
+          - 'postcss'
+      lint:
+        patterns:
+          - 'eslint'
+          - 'eslint-config-prettier'
+          - 'prettier'
+          - 'typescript'
+
+  - package-ecosystem: 'github-actions'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+    cooldown:
+      default-days: 7
+      semver-major-days: 30

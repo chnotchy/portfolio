@@ -1,0 +1,169 @@
+@import 'tailwindcss';
+
+/* Turbopack では自動検出が取りこぼすことがある。 */
+@source '../app/**/*.{ts,tsx}';
+@source '../components/**/*.{ts,tsx}';
+
+@theme {
+  /* Tailwind 既定の 640px を上書きし、ブレークポイントを 580px の 1 本に統一する。 */
+  --breakpoint-sm: 580px;
+
+  --color-surface: #2b3135;
+  --color-surface-raised: #4b4e50;
+  --color-ink: #eeeeee;
+  --color-ink-muted: #aaaaaa;
+  --color-link: #7bc1f3;
+  --color-link-hover: #cccccc;
+
+  /* ロゴのグラデーション。外枠側と文字側で明度を変えている。 */
+  --color-brand-start: #30a3f0;
+  --color-brand-end: #31deb0;
+  --color-brand-start-light: #50b5f8;
+  --color-brand-end-light: #48f6c8;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-quicksand), ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-surface);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    /* ルートを 20px にすると Tailwind の rem スケール全体がずれるため、本文側で指定する。 */
+    font-size: 1.25rem;
+    line-height: 1.6;
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
+  }
+
+  a {
+    color: var(--color-link);
+    text-decoration: none;
+    position: relative;
+    transition: 0.3s;
+  }
+
+  a:hover {
+    color: var(--color-link-hover);
+  }
+
+  a::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 110%;
+    width: 0;
+    height: 2px;
+    border-radius: 1px;
+    background: var(--color-link-hover);
+    transition: 0.3s;
+  }
+
+  a:hover::after {
+    width: 68%;
+    left: 16%;
+  }
+
+  @media (width <= 580px) {
+    a::after {
+      background: none;
+    }
+  }
+
+  /* リサイズの掴み手は works ページ側でアイコンを重ねて描いている。 */
+  ::-webkit-resizer {
+    display: none;
+  }
+}
+
+/*
+ * 3 層構成。本体のグラデーションを ::before がヘッダー地色で覆い、外周だけを縁として残す。
+ * 文字は ::after が別のグラデーションで塗り直す。
+ * ホバー時は ::before を半透明にして地のグラデーションを透かす。
+ */
+.site-logo {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  padding: 0.1em 0.3em 0.25em;
+  border-radius: 0.26em;
+  font-family: var(--font-display);
+  font-size: clamp(18px, 5vw, 2rem);
+  line-height: 1em;
+  color: transparent;
+  background: linear-gradient(to right, var(--color-brand-start), var(--color-brand-end));
+  transition: 0.3s;
+}
+
+.site-logo::before {
+  content: '';
+  position: absolute;
+  top: -0.5%;
+  right: -0.5%;
+  z-index: -1;
+  width: 101%;
+  height: 101%;
+  padding: 0;
+  border-radius: 0.25em;
+  background: var(--color-surface-raised);
+  background-clip: content-box;
+  transition: 0.3s;
+}
+
+.site-logo::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  /* 下線演出の指定を打ち消す。 */
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  padding: 0.1em 0.3em 0.25em;
+  font-size: clamp(18px, 5vw, 2rem);
+  line-height: 1em;
+  background: linear-gradient(
+    to right,
+    var(--color-brand-start-light),
+    var(--color-brand-end-light)
+  );
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: 0.3s;
+}
+
+a:hover .site-logo {
+  color: #fff;
+  border-radius: 0.25em;
+}
+
+a:hover .site-logo::after {
+  opacity: 0;
+}
+
+a:hover .site-logo::before {
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0.07em;
+  border-radius: 0.25em;
+  background: color-mix(in srgb, var(--color-surface-raised) 33%, transparent);
+  background-clip: content-box;
+}
+
+.site-logo-link::after {
+  display: none;
+}
+
+@media (width <= 580px) {
+  .site-logo,
+  .site-logo::after {
+    font-size: clamp(22px, 8vw, 2rem);
+  }
+}

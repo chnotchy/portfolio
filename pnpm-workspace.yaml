@@ -1,0 +1,25 @@
+# pnpm 11 は .npmrc からこれらの設定を読まない。
+
+# 単位は分。10080 = 7 日。
+minimumReleaseAge: 10080
+minimumReleaseAgeStrict: true
+minimumReleaseAgeIgnoreMissingTime: false
+
+blockExoticSubdeps: true
+
+trustPolicy: no-downgrade
+# 単位は分。129600 = 90 日。provenance 普及前のリリースは判定対象外にしないと
+# semver@6.3.1 のような古い推移依存がことごとく解決不能になる。
+trustPolicyIgnoreAfter: 129600
+
+allowBuilds:
+  # いずれもプラットフォーム別のビルド済みバイナリが optionalDependencies で入るため
+  # postinstall は不要。
+  unrs-resolver: false
+  esbuild: false
+  workerd: false
+
+# next の optional dependency。画像最適化サーバー用なので
+# output: 'export' + images.unoptimized では使われない。
+ignoredOptionalDependencies:
+  - sharp
