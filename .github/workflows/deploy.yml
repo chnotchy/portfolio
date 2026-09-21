@@ -10,13 +10,15 @@ concurrency:
   group: deploy-${{ github.ref }}
   cancel-in-progress: true
 
+# ジョブ側で宣言したものだけを与える。
+permissions: {}
+
 # action はコミット SHA で固定する。バージョンは 7 日以上前に公開されたものを選ぶ。
 jobs:
   deploy:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      deployments: write
       pull-requests: write
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -44,6 +46,16 @@ jobs:
       - name: Build
         run: pnpm build
 
+      # ブランチ名は fork の PR から任意に付けられ、シェルのメタ文字も含められる。
+      # コマンド文字列へ直接展開せず、環境変数経由で受けて使える文字だけに落とす。
+      - name: Resolve deployment branch
+        id: branch
+        env:
+          HEAD_REF: ${{ github.head_ref || github.ref_name }}
+        run: |
+          safe=$(printf '%s' "$HEAD_REF" | tr -c 'A-Za-z0-9._/-' '-')
+          echo "name=${safe:0:255}" >> "$GITHUB_OUTPUT"
+
       - name: Deploy to Cloudflare Pages
         id: deploy
         uses: cloudflare/wrangler-action@ebbaa1584979971c8614a24965b4405ff95890e0 # v4.0.0
@@ -53,14 +65,16 @@ jobs:
           # wrangler は devDependency として lockfile に固定してあり、action はそれを使う。
           # 未導入だと action が実行時に最新版を取得してしまう。
           packageManager: pnpm
-          command: pages deploy out --project-name=chnotchy --branch=${{ github.head_ref || github.ref_name }}
+          command: pages deploy out --project-name=chnotchy --branch=${{ steps.branch.outputs.name }}
 
       - name: Comment preview URL on PR
         if: github.event_name == 'pull_request'
         uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+        env:
+          DEPLOYMENT_URL: ${{ steps.deploy.outputs.deployment-url }}
         with:
           script: |
-            const deploymentUrl = '${{ steps.deploy.outputs.deployment-url }}';
+            const deploymentUrl = process.env.DEPLOYMENT_URL;
             if (!deploymentUrl) return;
             const body = `### Cloudflare Pages Preview\n\n${deploymentUrl}`;
             const { data: comments } = await github.rest.issues.listComments({
