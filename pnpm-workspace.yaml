@@ -23,3 +23,10 @@ allowBuilds:
 # output: 'export' + images.unoptimized では使われない。
 ignoredOptionalDependencies:
   - sharp
+
+overrides:
+  # miniflare が sharp 0.35.4（librsvg の脆弱性あり）を固定しているため。
+  # 修正版を含む miniflare が wrangler に入ったら外す。
+  'miniflare>sharp': 0.35.5
+  # minimatch の範囲内（^5.0.8）だがロックファイル上で古い版に留まっているため。
+  'brace-expansion@>=5.0.0 <5.0.12': 5.0.12
