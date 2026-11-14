@@ -1,7 +1,7 @@
-import { Archive, ArrowUpRight } from 'lucide-react'
+import { Archive, ArrowUpRight, Blocks, Globe, PenTool } from 'lucide-react'
 
 import { Chip } from '@/components/chip'
-import type { Work } from '@/content/works'
+import { formatWorkDate, workCategories, type Work, type WorkCategory } from '@/content/works'
 
 type Props = {
   work: Work
@@ -9,8 +9,20 @@ type Props = {
   headingAs?: 'h2' | 'h3'
 }
 
+const categoryIcons: Record<WorkCategory, typeof Globe> = {
+  'design-system': Blocks,
+  figma: PenTool,
+  web: Globe,
+}
+
+export function categoryLabel(category: WorkCategory) {
+  return workCategories.find(({ value }) => value === category)?.label ?? category
+}
+
 export function WorkCard({ work, headingAs: Heading = 'h3' }: Props) {
-  const { title, description, href, thumbnail, stack, archived } = work
+  const { title, description, href, thumbnail, thumbnailDark, stack, archived, category, date } =
+    work
+  const Icon = categoryIcons[category]
 
   return (
     <a
@@ -20,18 +32,45 @@ export function WorkCard({ work, headingAs: Heading = 'h3' }: Props) {
       className="group border-border-subtle bg-surface-tertiary block overflow-hidden rounded-xl border transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_2px_20px_rgba(0,0,0,0.06)] dark:hover:shadow-[0_2px_20px_rgba(255,255,255,0.04)]"
     >
       <div className="bg-surface-secondary border-border-subtle aspect-video overflow-hidden border-b">
-        <img
-          src={thumbnail}
-          alt=""
-          width={1200}
-          height={675}
-          loading="lazy"
-          decoding="async"
-          className="h-full w-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.03]"
-        />
+        {thumbnail ? (
+          <>
+            <img
+              src={thumbnail}
+              alt=""
+              width={1200}
+              height={675}
+              loading="lazy"
+              decoding="async"
+              className={`h-full w-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.03] ${thumbnailDark ? 'dark:hidden' : ''}`}
+            />
+            {thumbnailDark && (
+              <img
+                src={thumbnailDark}
+                alt=""
+                width={1200}
+                height={675}
+                loading="lazy"
+                decoding="async"
+                className="hidden h-full w-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.03] dark:block"
+              />
+            )}
+          </>
+        ) : (
+          <div className="flex h-full w-full flex-col items-center justify-center gap-3 px-6 text-center transition-transform duration-500 ease-out group-hover:scale-[1.03]">
+            <Icon aria-hidden strokeWidth={1.25} className="text-ink-tertiary size-8" />
+            <span className="text-ink text-lg font-semibold tracking-tight">{title}</span>
+          </div>
+        )}
       </div>
       <div className="p-4 sm:p-5">
-        <Heading className="flex items-start gap-1.5 text-base leading-snug font-semibold transition-opacity duration-200 group-hover:opacity-60">
+        <p className="text-ink-tertiary flex items-center gap-2 text-xs">
+          <time dateTime={date}>{formatWorkDate(date)}</time>
+          <span aria-hidden className="opacity-40">
+            /
+          </span>
+          <span>{categoryLabel(category)}</span>
+        </p>
+        <Heading className="mt-1 flex items-start gap-1.5 text-base leading-snug font-semibold transition-opacity duration-200 group-hover:opacity-60">
           {title}
           <ArrowUpRight
             aria-hidden
@@ -53,5 +92,25 @@ export function WorkCard({ work, headingAs: Heading = 'h3' }: Props) {
         </ul>
       </div>
     </a>
+  )
+}
+
+export function WorkLinks({ links }: { links: Work['links'] }) {
+  if (!links?.length) return null
+  return (
+    <div className="flex flex-wrap gap-x-4 gap-y-1">
+      {links.map(({ label, href }) => (
+        <a
+          key={href}
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-ink-secondary hover:text-ink inline-flex items-center gap-1 text-sm transition-colors"
+        >
+          {label}
+          <ArrowUpRight aria-hidden strokeWidth={1.5} className="size-4 shrink-0" />
+        </a>
+      ))}
+    </div>
   )
 }

@@ -11,6 +11,8 @@ import { profile } from '@/content/profile'
 import { skillGroups } from '@/content/skills'
 import { works } from '@/content/works'
 
+const latestWorks = [...works].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 4)
+
 export default function Home() {
   return (
     <>
@@ -63,11 +65,11 @@ export default function Home() {
         <div className="container-wide">
           <SectionHeading
             title="Works"
-            description="制作した Web サイト"
+            description="制作物とデザイン"
             more={{ href: '/works', label: 'すべて見る' }}
           />
           <div className="stagger grid grid-cols-1 gap-5 sm:grid-cols-2">
-            {works.map((work) => (
+            {latestWorks.map((work) => (
               <div key={work.title} className="fade-up">
                 <WorkCard work={work} />
               </div>

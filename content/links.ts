@@ -1,6 +1,6 @@
 // as const を外すと href が string になり typedRoutes の型に通らない。
 export const pageLinks = [
-  { href: '/works', label: 'Works', description: '制作した Web サイト' },
+  { href: '/works', label: 'Works', description: '制作物とデザイン' },
   { href: '/skills', label: 'Skills', description: '扱える言語とツール' },
   { href: '/profile', label: 'Profile', description: '自己紹介' },
   { href: '/contact', label: 'Contact', description: '連絡先とアカウント' },
