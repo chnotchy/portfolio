@@ -13,16 +13,25 @@ export const skillGroups: SkillGroup[] = [
   {
     title: 'Frameworks',
     description: 'Web サイトの実装に使うもの',
-    items: ['React', 'Next.js', 'Nuxt', 'Tailwind CSS'],
+    items: ['React', 'Next.js', 'Nuxt', 'Astro', 'Lit', 'Tailwind CSS'],
   },
   {
     title: 'Tooling',
     description: '開発環境と自動化',
-    items: ['Git', 'GitHub Actions', 'pnpm', 'ESLint', 'Prettier'],
+    items: [
+      'Git',
+      'GitHub Actions',
+      'pnpm',
+      'Turborepo',
+      'Playwright',
+      'Changesets',
+      'ESLint',
+      'Prettier',
+    ],
   },
   {
     title: 'Design',
-    description: '画面設計とプロトタイピング',
-    items: ['Figma', 'Adobe XD'],
+    description: '画面設計とデザインシステム',
+    items: ['Figma', 'Figma Plugin API', 'Adobe XD', 'Design Tokens (DTCG)', 'Web Components'],
   },
 ]

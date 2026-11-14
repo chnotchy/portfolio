@@ -14,7 +14,7 @@ export default function Skills() {
     <>
       <PageHeader
         title="Skills"
-        description="実際に手を動かして使ったことのあるものを挙げています。"
+        description="制作と開発で扱っている言語・フレームワーク・ツール。"
       />
       <section className="container-wide pb-24">
         <div className="stagger grid grid-cols-1 gap-5 sm:grid-cols-2">
